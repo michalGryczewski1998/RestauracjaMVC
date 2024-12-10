@@ -4,7 +4,7 @@ using Restauracja.Models.Database.Entities;
 
 namespace Restauracja.Models.Database
 {
-    public class RestaurantDbContext : DbContext
+    public class RestauracjaDbContext : DbContext
     {
         public DbSet<DaneRestauracji> restauracjas {  get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
