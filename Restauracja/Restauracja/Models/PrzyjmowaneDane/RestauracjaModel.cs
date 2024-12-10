@@ -12,8 +12,8 @@
         public bool CzyMozliwaRezerwacja { get; set; }
         public bool CzyImprezyOkolicznosciowe { get; set; }
         public bool CzySalaOkolicznosciowa { get; set; }
-        public DateTime GodzinaOtwarcia { get; set; }
-        public DateTime GodzinaZamkniecia { get; set; }
+        public TimeSpan GodzinaOtwarcia { get; set; }
+        public TimeSpan GodzinaZamkniecia { get; set; }
         public TimeSpan CzasOtwarcia { get; set; }
     }
 }
