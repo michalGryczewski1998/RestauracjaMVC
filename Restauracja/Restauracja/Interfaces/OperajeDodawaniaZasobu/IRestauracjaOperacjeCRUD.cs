@@ -7,6 +7,6 @@ namespace Restauracja.Interfaces.OperajeDodawaniaZasobu
         public bool DodajRestauracje(RestauracjaModel model);
         public bool UsunRestauracje(int Id);
         public bool EdytujRestauracje(int Id);
-        public bool WyswietlRestauracje(int Id);
+        public RestauracjaModel WyswietlRestauracje(int Id);
     }
 }

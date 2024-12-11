@@ -56,9 +56,20 @@ namespace Restauracja.Services
             throw new NotImplementedException();
         }
 
-        public bool WyswietlRestauracje(int Id)
+        public RestauracjaModel WyswietlRestauracje(int Id)
         {
-            throw new NotImplementedException();
+            RestauracjaModel restauracja = new RestauracjaModel();
+            List<DaneRestauracji> dane = _restauracjaDbContext.restauracjas.Where(x => x.Id == Id).ToList();
+
+            if (dane != null)
+            {
+                restauracja.Nazwa = dane[0].Nazwa;
+                restauracja.Opis = dane[0].Opis;
+                restauracja.TypLokalu = dane[0].TypLokalu;
+            }
+
+            return restauracja;
+
         }
     }
 }

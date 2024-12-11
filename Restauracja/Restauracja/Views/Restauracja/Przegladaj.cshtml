@@ -1,0 +1,25 @@
+﻿@model Restauracja.Models.PrzyjmowaneDane.RestauracjaModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="~/css/PrzegladajStyl.css" />
+</head>
+<body>
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Zdjęcie restauracji">
+        <div class="card-content">
+            <h3>@Model.Nazwa</h3>
+            <p class="type">Typ: @Model.TypRestauracji</p>
+            <p>@Model.Opis</p>
+        </div>
+        <div class="card-footer">
+            <button>Więcej</button>
+        </div>
+    </div>
+</body>

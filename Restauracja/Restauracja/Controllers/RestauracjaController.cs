@@ -20,6 +20,18 @@ namespace Restauracja.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Przegladaj()
+        {
+            int idRestauracja = 1;
+            var czyDoWyswietlenia = _restauracja.WyswietlRestauracje(idRestauracja);
+
+            if (czyDoWyswietlenia != null)
+            {
+                return View(czyDoWyswietlenia);
+            }
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> DodajRestauracje(RestauracjaModel daneRestauracji)
         {
