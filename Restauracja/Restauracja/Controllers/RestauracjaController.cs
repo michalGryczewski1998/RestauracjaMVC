@@ -20,16 +20,16 @@ namespace Restauracja.Controllers
             return View();
         }
 
+        [HttpGet]
         public async Task<IActionResult> Przegladaj()
         {
-            int idRestauracja = 1;
-            var czyDoWyswietlenia = _restauracja.WyswietlRestauracje(idRestauracja);
+            var czyDoWyswietlenia = await _restauracja.WyswietlRestauracje();
 
             if (czyDoWyswietlenia != null)
             {
                 return View(czyDoWyswietlenia);
             }
-            return View();
+            return BadRequest();
         }
 
         [HttpPost]
@@ -37,7 +37,7 @@ namespace Restauracja.Controllers
         {
             if (ModelState.IsValid)
             {
-                var czyDodanoDane = _restauracja.DodajRestauracje(daneRestauracji);
+                var czyDodanoDane = await _restauracja.DodajRestauracje(daneRestauracji);
 
                 if (czyDodanoDane)
                 {
