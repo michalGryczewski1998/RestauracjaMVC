@@ -4,9 +4,9 @@ namespace Restauracja.Interfaces.OperajeDodawaniaZasobu
 {
     public interface IRestauracjaOperacjeCRUD
     {
-        public bool DodajRestauracje(RestauracjaModel model);
-        public bool UsunRestauracje(int Id);
-        public bool EdytujRestauracje(int Id);
-        public RestauracjaModel WyswietlRestauracje(int Id);
+        public Task<bool> DodajRestauracje(RestauracjaModel model);
+        public Task<bool> UsunRestauracje(int Id);
+        public Task<bool> EdytujRestauracje(int Id);
+        public Task<List<RestauracjaModel>> WyswietlRestauracje();
     }
 }

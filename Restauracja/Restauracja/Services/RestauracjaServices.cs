@@ -2,6 +2,7 @@
 using Restauracja.Models.Database;
 using Restauracja.Models.Database.Entities;
 using Restauracja.Models.PrzyjmowaneDane;
+using System.Linq;
 
 namespace Restauracja.Services
 {
@@ -12,7 +13,7 @@ namespace Restauracja.Services
         {
            //dodaj wstrzykniecie dbContext !!!     
         }
-        public bool DodajRestauracje(RestauracjaModel model)
+        public async Task<bool> DodajRestauracje(RestauracjaModel model)
         {
             if(model != null)
             {
@@ -46,26 +47,40 @@ namespace Restauracja.Services
             return false;
         }
 
-        public bool EdytujRestauracje(int Id)
+        public async Task<bool> EdytujRestauracje(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public bool UsunRestauracje(int Id)
+        public async Task<bool> UsunRestauracje(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public RestauracjaModel WyswietlRestauracje(int Id)
+        public async Task<List<RestauracjaModel>> WyswietlRestauracje()
         {
-            RestauracjaModel restauracja = new RestauracjaModel();
-            List<DaneRestauracji> dane = _restauracjaDbContext.restauracjas.Where(x => x.Id == Id).ToList();
+            List<RestauracjaModel> restauracja = [];
+            List<DaneRestauracji> dane = [.. _restauracjaDbContext.restauracjas];
 
             if (dane != null)
             {
-                restauracja.Nazwa = dane[0].Nazwa;
-                restauracja.Opis = dane[0].Opis;
-                restauracja.TypLokalu = dane[0].TypLokalu;
+                foreach (var item in dane)
+                {
+                    restauracja.Add(new RestauracjaModel
+                    {
+                        Nazwa = item.Nazwa,
+                        Opis = item.Opis,
+                        TypLokalu = item.TypLokalu,
+                        TypRestauracji = item.TypRestauracji,
+                        CzasOtwarcia = item.CzasOtwarcia,
+                        CzyDriveThru = item.CzyDriveThru,   
+                        CzyDostawa = item.CzyDostawa,
+                        CzyImprezyOkolicznosciowe = item.CzyImprezyOkolicznosciowe,
+                        CzyMozliwaRezerwacja = item.CzyMozliwaRezerwacja,
+                        CzyParkinPrzyRestauracji = item.CzyParkinPrzyRestauracji,
+                        CzySalaOkolicznosciowa = item.CzySalaOkolicznosciowa
+                    });
+                }
             }
 
             return restauracja;
