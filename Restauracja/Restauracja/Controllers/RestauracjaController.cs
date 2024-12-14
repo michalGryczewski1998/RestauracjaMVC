@@ -32,6 +32,22 @@ namespace Restauracja.Controllers
             return BadRequest();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> RestauracjaDetails(int Id)
+        {
+            if (Id == 0)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var restauracja = await _restauracja.WyswietlKonkretnaRestauracje(Id);
+            if (restauracja == null)
+            {
+                return BadRequest();
+            }
+            return View(restauracja);
+        }
+
         [HttpPost]
         public async Task<IActionResult> DodajRestauracje(RestauracjaModel daneRestauracji)
         {

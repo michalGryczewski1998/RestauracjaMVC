@@ -1,0 +1,73 @@
+﻿/* Resetowanie domyślnych stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Kontener główny */
+.restaurant-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Nagłówek */
+.restaurant-header {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+/* Sekcja detali */
+.restaurant-details {
+    padding: 20px;
+}
+
+.detail-item {
+    margin-bottom: 10px;
+}
+
+    .detail-item span {
+        font-weight: bold;
+        color: #555;
+    }
+
+/* Styl boolean */
+.boolean-true {
+    color: green;
+    font-weight: bold;
+}
+
+.boolean-false {
+    color: red;
+    font-weight: bold;
+}
+
+/* Czas otwarcia/zamknięcia */
+.time {
+    font-style: italic;
+    color: #666;
+}
+
+/* Stopka */
+.restaurant-footer {
+    background-color: #f1f1f1;
+    padding: 10px 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    font-size: 0.9em;
+}
