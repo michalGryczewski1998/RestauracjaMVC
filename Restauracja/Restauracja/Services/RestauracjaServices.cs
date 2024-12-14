@@ -1,4 +1,5 @@
-﻿using Restauracja.Interfaces.OperajeDodawaniaZasobu;
+﻿using Microsoft.EntityFrameworkCore;
+using Restauracja.Interfaces.OperajeDodawaniaZasobu;
 using Restauracja.Models.Database;
 using Restauracja.Models.Database.Entities;
 using Restauracja.Models.PrzyjmowaneDane;
@@ -57,6 +58,33 @@ namespace Restauracja.Services
             throw new NotImplementedException();
         }
 
+        public async Task<RestauracjaModel> WyswietlKonkretnaRestauracje(int Id)
+        {
+            RestauracjaModel model = new();
+            if (Id == 0)
+                return model;
+
+            var restauracjaSzukana = await _restauracjaDbContext.restauracjas.FirstOrDefaultAsync(x => x.Id == Id);
+
+            if (restauracjaSzukana != null)
+            {
+                model.Id = restauracjaSzukana.Id;
+                model.Nazwa = restauracjaSzukana.Nazwa;
+                model.Opis = restauracjaSzukana.Opis;
+                model.TypLokalu = restauracjaSzukana.TypLokalu;
+                model.TypRestauracji = restauracjaSzukana.TypRestauracji;
+                model.CzasOtwarcia = restauracjaSzukana.CzasOtwarcia;
+                model.CzyDriveThru = restauracjaSzukana.CzyDriveThru;
+                model.CzyDostawa =  restauracjaSzukana.CzyDostawa;
+                model.CzyImprezyOkolicznosciowe = restauracjaSzukana.CzyImprezyOkolicznosciowe;
+                model.CzyMozliwaRezerwacja = restauracjaSzukana.CzyMozliwaRezerwacja;
+                model.CzyParkinPrzyRestauracji = restauracjaSzukana.CzyParkinPrzyRestauracji;
+                model.CzySalaOkolicznosciowa = restauracjaSzukana.CzySalaOkolicznosciowa;
+            }
+            
+            return model;
+        }
+
         public async Task<List<RestauracjaModel>> WyswietlRestauracje()
         {
             List<RestauracjaModel> restauracja = [];
@@ -68,6 +96,7 @@ namespace Restauracja.Services
                 {
                     restauracja.Add(new RestauracjaModel
                     {
+                        Id = item.Id,
                         Nazwa = item.Nazwa,
                         Opis = item.Opis,
                         TypLokalu = item.TypLokalu,

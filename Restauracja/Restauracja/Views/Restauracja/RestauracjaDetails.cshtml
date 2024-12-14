@@ -1,0 +1,82 @@
+﻿@model Restauracja.Models.PrzyjmowaneDane.RestauracjaModel
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="~/css/DetailsrestauracjaStyl.css" />
+</head>
+
+<body>
+    <div class="restaurant-container">
+        <!-- Nagłówek -->
+        <div class="restaurant-header">
+            Restauracja: <strong>@Model.Nazwa</strong>
+        </div>
+
+        <!-- Szczegóły -->
+        <div class="restaurant-details">
+            <div class="detail-item">
+                <span>Opis:</span> @Model.Opis
+            </div>
+            <div class="detail-item">
+                <span>Typ Lokalu:</span> @Model.TypLokalu
+            </div>
+            <div class="detail-item">
+                <span>Typ Restauracji:</span> @Model.TypRestauracji
+            </div>
+            <div class="detail-item">
+                <span>Czy DriveThru:</span>
+                <span class="@(Model.CzyDriveThru ? "boolean-true" : "boolean-false")">
+                    @(Model.CzyDriveThru ? "Tak" : "Nie")
+                </span>
+            </div>
+            <div class="detail-item">
+                <span>Czy Dostawa:</span>
+                <span class="@(Model.CzyDostawa ? "boolean-true" : "boolean-false")">
+                    @(Model.CzyDostawa ? "Tak" : "Nie")
+                </span>
+            </div>
+            <div class="detail-item">
+                <span>Czy Parking:</span>
+                <span class="@(Model.CzyParkinPrzyRestauracji ? "boolean-true" : "boolean-false")">
+                    @(Model.CzyParkinPrzyRestauracji ? "Tak" : "Nie")
+                </span>
+            </div>
+            <div class="detail-item">
+                <span>Możliwość Rezerwacji:</span>
+                <span class="@(Model.CzyMozliwaRezerwacja ? "boolean-true" : "boolean-false")">
+                    @(Model.CzyMozliwaRezerwacja ? "Tak" : "Nie")
+                </span>
+            </div>
+            <div class="detail-item">
+                <span>Imprezy Okolicznościowe:</span>
+                <span class="@(Model.CzyImprezyOkolicznosciowe ? "boolean-true" : "boolean-false")">
+                    @(Model.CzyImprezyOkolicznosciowe ? "Tak" : "Nie")
+                </span>
+            </div>
+            <div class="detail-item">
+                <span>Sala Okolicznościowa:</span>
+                <span class="@(Model.CzySalaOkolicznosciowa ? "boolean-true" : "boolean-false")">
+                    @(Model.CzySalaOkolicznosciowa ? "Tak" : "Nie")
+                </span>
+            </div>
+            <div class="detail-item">
+                <span>Godzina Otwarcia:</span>
+                <span class="time">@Model.GodzinaOtwarcia</span>
+            </div>
+            <div class="detail-item">
+                <span>Godzina Zamknięcia:</span>
+                <span class="time">@Model.GodzinaZamkniecia</span>
+            </div>
+            <div class="detail-item">
+                <span>Czas Otwarcia:</span>
+                <span class="time">@Model.CzasOtwarcia</span>
+            </div>
+        </div>
+
+        <!-- Stopka -->
+        <div class="restaurant-footer">
+            © 2024 Twoja Restauracja | Wszystkie prawa zastrzeżone
+        </div>
+    </div>
+</body>

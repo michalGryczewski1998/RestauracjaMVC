@@ -8,5 +8,6 @@ namespace Restauracja.Interfaces.OperajeDodawaniaZasobu
         public Task<bool> UsunRestauracje(int Id);
         public Task<bool> EdytujRestauracje(int Id);
         public Task<List<RestauracjaModel>> WyswietlRestauracje();
+        public Task<RestauracjaModel> WyswietlKonkretnaRestauracje(int Id);
     }
 }
