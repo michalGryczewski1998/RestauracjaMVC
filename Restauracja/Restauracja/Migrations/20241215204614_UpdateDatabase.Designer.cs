@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restauracja.Models.Database;
 
@@ -11,9 +12,11 @@ using Restauracja.Models.Database;
 namespace Restauracja.Migrations
 {
     [DbContext(typeof(RestauracjaDbContext))]
-    partial class RestauracjaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241215204614_UpdateDatabase")]
+    partial class UpdateDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,32 +54,6 @@ namespace Restauracja.Migrations
                     b.HasIndex("RestauracjaId");
 
                     b.ToTable("AdresRestauracji");
-                });
-
-            modelBuilder.Entity("Restauracja.Models.Database.Entities.AplikacjaInformacje", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DataWersji")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NazwaAplikacji")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Opis")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("WersjaAplikacji")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AplikacjaInformacje");
                 });
 
             modelBuilder.Entity("Restauracja.Models.Database.Entities.DaneKontaktoweRestauracji", b =>
@@ -163,7 +140,7 @@ namespace Restauracja.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restauracjas");
+                    b.ToTable("restauracjas");
                 });
 
             modelBuilder.Entity("Restauracja.Models.Database.Entities.DaniaRestauracji", b =>
@@ -201,38 +178,6 @@ namespace Restauracja.Migrations
                     b.HasIndex("RestauracjaID");
 
                     b.ToTable("DaniaRestauracji");
-                });
-
-            modelBuilder.Entity("Restauracja.Models.Database.Entities.ParametryKonfiguracyjne", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("CzyWlaczone")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("DataDo")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataWlaczenia")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Nazwa")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Opis")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ParametryKonfiguracyjne");
                 });
 
             modelBuilder.Entity("Restauracja.Models.Database.Entities.AdresRestauracji", b =>

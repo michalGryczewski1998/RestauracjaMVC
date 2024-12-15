@@ -35,7 +35,7 @@ namespace Restauracja.Services
                     CzasOtwarcia = model.CzasOtwarcia,
                 };
 
-                _restauracjaDbContext.restauracjas.Add(modelRestauracji);
+                _restauracjaDbContext.Restauracjas.Add(modelRestauracji);
                 int czyDodano = _restauracjaDbContext.SaveChanges();
 
                 if (czyDodano > 0)
@@ -64,7 +64,7 @@ namespace Restauracja.Services
             if (Id == 0)
                 return model;
 
-            var restauracjaSzukana = await _restauracjaDbContext.restauracjas.FirstOrDefaultAsync(x => x.Id == Id);
+            var restauracjaSzukana = await _restauracjaDbContext.Restauracjas.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (restauracjaSzukana != null)
             {
@@ -88,7 +88,7 @@ namespace Restauracja.Services
         public async Task<List<RestauracjaModel>> WyswietlRestauracje()
         {
             List<RestauracjaModel> restauracja = [];
-            List<DaneRestauracji> dane = [.. _restauracjaDbContext.restauracjas];
+            List<DaneRestauracji> dane = [.. _restauracjaDbContext.Restauracjas];
 
             if (dane != null)
             {

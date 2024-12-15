@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restauracja.Models.Database;
 
@@ -11,9 +12,11 @@ using Restauracja.Models.Database;
 namespace Restauracja.Migrations
 {
     [DbContext(typeof(RestauracjaDbContext))]
-    partial class RestauracjaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241215210002_UpdateDatabase2")]
+    partial class UpdateDatabase2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
