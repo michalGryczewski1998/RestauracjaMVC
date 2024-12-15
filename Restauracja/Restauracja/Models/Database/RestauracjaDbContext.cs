@@ -6,7 +6,12 @@ namespace Restauracja.Models.Database
 {
     public class RestauracjaDbContext : DbContext
     {
-        public DbSet<DaneRestauracji> restauracjas {  get; set; }
+        public DbSet<DaneRestauracji> Restauracjas {  get; set; }
+        public DbSet<AdresRestauracji> AdresRestauracji {  get; set; }
+        public DbSet<DaniaRestauracji> DaniaRestauracji { get; set; }
+        public DbSet<DaneKontaktoweRestauracji> DaneKontaktoweRestauracji { get; set; }
+        public DbSet<AplikacjaInformacje> AplikacjaInformacje { get; set; }
+        public DbSet<ParametryKonfiguracyjne> ParametryKonfiguracyjne { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             var daneDoLogowania = new ConfigurationBuilder()
@@ -43,7 +48,52 @@ namespace Restauracja.Models.Database
 
                 entity.Property(x => x.CzyDostawa)
                         .IsRequired();
-            });               
+            });
+
+            modelBuilder.Entity<DaneRestauracji>(entity =>
+            {
+                entity.HasMany(x => x.Adres)
+                .WithOne(x => x.DaneRestauracji)
+                .HasForeignKey(x => x.RestauracjaId);
+            });
+
+            modelBuilder.Entity<DaneRestauracji>(entity =>
+            {
+                entity.HasMany(x => x.DaniaRestauracji)
+                .WithOne(x => x.DaneRestauracji)
+                .HasForeignKey(x => x.RestauracjaID);
+            });
+
+            modelBuilder.Entity<DaneRestauracji>(entity =>
+            {
+                entity.HasOne(x => x.DaneKontaktoweRestauracji)
+                .WithOne(x => x.DaneRestauracji)
+                .HasForeignKey<DaneKontaktoweRestauracji>(d => d.RestauracjaId);
+            });
+
+            modelBuilder.Entity<AplikacjaInformacje>(entity =>
+            {
+                entity.Property(x => x.NazwaAplikacji)
+                .IsRequired()
+                .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<ParametryKonfiguracyjne>(entity =>
+            {
+                entity.Property(x => x.CzyWlaczone)
+                .IsRequired();
+
+                entity.Property(x => x.DataWlaczenia)
+                .IsRequired();
+
+                entity.Property(x => x.Nazwa)
+                .IsRequired()
+                .HasMaxLength(50);
+
+                entity.Property(x => x.Opis)
+                .IsRequired()
+                .HasMaxLength(500);
+            });
         }
     }
 }

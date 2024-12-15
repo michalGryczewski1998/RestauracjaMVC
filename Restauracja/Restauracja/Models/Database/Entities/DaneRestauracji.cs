@@ -16,6 +16,9 @@
         public TimeSpan GodzinaOtwarcia { get; set; }
         public TimeSpan GodzinaZamkniecia { get; set; }
         public TimeSpan CzasOtwarcia { get; set; }
+        public List<AdresRestauracji> Adres { get; set; }
+        public List<DaniaRestauracji> DaniaRestauracji { get; set; }
+        public DaneKontaktoweRestauracji DaneKontaktoweRestauracji { get; set; }
 
     }
 }
