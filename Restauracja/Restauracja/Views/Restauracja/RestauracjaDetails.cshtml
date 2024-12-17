@@ -72,6 +72,14 @@
                 <span>Czas Otwarcia:</span>
                 <span class="time">@Model.CzasOtwarcia</span>
             </div>
+            <div class="card-footer d-flex justify-content-end gap-2">
+                <a asp-controller="Edytuj" asp-action="RestauracjaDetails" asp-route-id="1" class="btn btn-success">
+                    Edytuj
+                </a>
+                <a asp-controller="Usun" asp-action="RestauracjaDetails" asp-route-id="1" class="btn btn-danger">
+                    Usuń
+                </a>
+            </div>
         </div>
 
         <!-- Stopka -->

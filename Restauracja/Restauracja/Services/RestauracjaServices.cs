@@ -21,6 +21,9 @@ namespace Restauracja.Services
                 var modelRestauracji = new DaneRestauracji 
                 {
                     Nazwa = model.Nazwa,
+                    Zdjecie = model.Zdjecie,
+                    CzyWypelnioneDaneAdres = false,
+                    CzyWypelnioneDaneDan = false,
                     Opis = model.Opis,
                     TypLokalu = model.TypLokalu,
                     TypRestauracji = model.TypRestauracji,
