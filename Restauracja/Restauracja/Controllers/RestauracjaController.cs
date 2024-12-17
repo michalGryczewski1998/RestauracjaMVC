@@ -8,7 +8,7 @@ namespace Restauracja.Controllers
 {
     public class RestauracjaController : Controller
     {
-        private IRestauracjaOperacjeCRUD _restauracja;
+        private readonly IRestauracjaOperacjeCRUD _restauracja;
 
         public RestauracjaController(IRestauracjaOperacjeCRUD restauracja)
         {

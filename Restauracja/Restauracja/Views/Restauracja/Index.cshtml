@@ -8,6 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strona główna</title>
     <link rel="stylesheet" href="~/css/DodawanieRestauracji.css" />
+
+    <script>
+        document.getElementById("Zdjecie").addEventListener("change", function () {
+            const file = this.files[0]; // Pobierz wybrany plik
+            const reader = new FileReader();
+
+            if (file) {
+                reader.onload = function (e) {
+                    const base64String = e.target.result; // Konwersja na Base64
+                    document.getElementById("Zdjecie").value = base64String; // Wstaw do textarea
+                };
+                reader.readAsDataURL(file); // Czytaj plik jako Base64
+            }
+        });
+    </script>
 </head>
 <body>
 <h1>Formularz Danych Restauracji</h1>
@@ -22,6 +37,14 @@
     <div class="form-group">
         <label for="Opis">Opis:</label>
         <textarea id="Opis" name="Opis"></textarea>
+    </div>
+
+    <!-- Zdjecie -->
+    <div class="form-group">
+            <div class="form-group">
+                <label for="Zdjecie">Wybierz zdjęcie:</label>
+                <input type="file" id="Zdjecie" name="Zdjecie" accept="image/*" />
+            </div>
     </div>
 
     <!-- TypLokalu -->

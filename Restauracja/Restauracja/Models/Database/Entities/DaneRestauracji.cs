@@ -5,6 +5,8 @@
         public int Id { get; set; }
         public string Nazwa { get; set; }
         public string Zdjecie { get; set; }
+        public bool CzyWypelnioneDaneAdres { get; set; }
+        public bool CzyWypelnioneDaneDan { get; set; }
         public string Opis { get; set; }
         public string TypLokalu { get; set; }
         public string TypRestauracji { get; set; }
