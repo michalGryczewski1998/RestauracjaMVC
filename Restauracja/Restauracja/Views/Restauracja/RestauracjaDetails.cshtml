@@ -73,12 +73,27 @@
                 <span class="time">@Model.CzasOtwarcia</span>
             </div>
             <div class="card-footer d-flex justify-content-end gap-2">
-                <a asp-controller="Edytuj" asp-action="RestauracjaDetails" asp-route-id="1" class="btn btn-success">
+                @if(!Model.CzyWypelnioneDaneAdres)
+                {
+                    <a asp-controller="Restauracja" asp-action="DodajAdres" asp-route-id="@Model.Id" class="btn btn-danger">
+                        Dokończ tworzenie restauracji
+                    </a>
+                }
+                else
+                {
+                <a asp-controller="Restauracja" asp-action="RestauracjaDetails" asp-route-id="1" class="btn btn-success">
                     Edytuj
                 </a>
-                <a asp-controller="Usun" asp-action="RestauracjaDetails" asp-route-id="1" class="btn btn-danger">
+                <a asp-controller="Restauracja" asp-action="RestauracjaDetails" asp-route-id="1" class="btn btn-danger">
                     Usuń
                 </a>
+                <a asp-controller="Restauracja" asp-action="RestauracjaDetails" asp-route-id="1" class="btn btn-success">
+                    Dodaj danie
+                </a>
+                <a asp-controller="Restauracja" asp-action="DodajAdres" asp-route-id="@Model.Id" class="btn btn-primary">
+                    Więcej
+                </a>
+                }
             </div>
         </div>
 

@@ -64,5 +64,31 @@ namespace Restauracja.Controllers
             }
             return View(daneRestauracji);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> DodajAdres(int Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+            ViewData["RestauracjaId"] = Id;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ZapiszAdres(AdresModel daneAdresowe)
+        {
+            if (ModelState.IsValid)
+            {
+                var czyDodanoAdres = await _restauracja.DodajAdresDlaRestauracji(daneAdresowe);
+
+                if (czyDodanoAdres)
+                {
+                    return Redirect("Index");
+                }
+                return BadRequest();
+            }
+            return View(daneAdresowe);
+        }
     }
 }
