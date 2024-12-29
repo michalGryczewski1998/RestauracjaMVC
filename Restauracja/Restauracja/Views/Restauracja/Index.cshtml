@@ -7,22 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strona główna</title>
-    <link rel="stylesheet" href="~/css/DodawanieRestauracji.css" />
-
-    <script>
-        document.getElementById("Zdjecie").addEventListener("change", function () {
-            const file = this.files[0]; // Pobierz wybrany plik
-            const reader = new FileReader();
-
-            if (file) {
-                reader.onload = function (e) {
-                    const base64String = e.target.result; // Konwersja na Base64
-                    document.getElementById("Zdjecie").value = base64String; // Wstaw do textarea
-                };
-                reader.readAsDataURL(file); // Czytaj plik jako Base64
-            }
-        });
-    </script>
+    <link rel="stylesheet" href="~/css/DodawanieRestauracji.css" />  
 </head>
 <body>
 <h1>Formularz Danych Restauracji</h1>
@@ -41,10 +26,9 @@
 
     <!-- Zdjecie -->
     <div class="form-group">
-            <div class="form-group">
-                <label for="Zdjecie">Wybierz zdjęcie:</label>
-                <input type="file" id="Zdjecie" name="Zdjecie" accept="image/*" />
-            </div>
+        <label for="Zdjecie">Wybierz zdjęcie:</label>
+        <input type="file" id="PlikZdjecia" accept="image/*" />
+        <textarea id="Zdjecie" name="Zdjecie" hidden></textarea>
     </div>
 
     <!-- TypLokalu -->
@@ -115,4 +99,6 @@
 
     <button type="submit">Zapisz</button>
 </form>
+
+    <script src="~/js/KonwersjaZdjecia.js"></script>
 </body>

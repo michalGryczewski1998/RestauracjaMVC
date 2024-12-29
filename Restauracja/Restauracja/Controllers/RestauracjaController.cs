@@ -53,6 +53,7 @@ namespace Restauracja.Controllers
         {
             if (ModelState.IsValid)
             {
+                daneRestauracji.Zdjecie = daneRestauracji.Zdjecie.Split(',')[1];
                 var czyDodanoDane = await _restauracja.DodajRestauracje(daneRestauracji);
 
                 if (czyDodanoDane)
