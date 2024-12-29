@@ -5,7 +5,7 @@
         reader.onload = function (e) {
             const base64String = e.target.result; // Konwersja na Base64
             document.getElementById("Zdjecie").value = base64String; // Ustawienie ukrytego pola
-            console.log("Tu jestem " + base64String);
+            // console.log("Tu jestem " + base64String); // Przydatne w debug
         };
         reader.readAsDataURL(file); // Odczyt pliku jako Base64
     }
