@@ -143,7 +143,8 @@ namespace Restauracja.Services
                         CzyImprezyOkolicznosciowe = item.CzyImprezyOkolicznosciowe,
                         CzyMozliwaRezerwacja = item.CzyMozliwaRezerwacja,
                         CzyParkinPrzyRestauracji = item.CzyParkinPrzyRestauracji,
-                        CzySalaOkolicznosciowa = item.CzySalaOkolicznosciowa
+                        CzySalaOkolicznosciowa = item.CzySalaOkolicznosciowa,
+                        Zdjecie = item.Zdjecie
                     });
                 }
             }
