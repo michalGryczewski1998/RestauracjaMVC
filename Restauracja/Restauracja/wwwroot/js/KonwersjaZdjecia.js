@@ -1,12 +1,16 @@
-﻿document.getElementById("PlikZdjecia").addEventListener("change", function () {
-    const file = this.files[0]; // Pobierz wybrany plik
+﻿const inputElement = document.getElementById("PlikZdjecia");
+const textarea = document.getElementById("Zdjecie");
+
+inputElement.addEventListener("change", function () {
+    const file = inputElement.files[0]; // Pobierz wybrany plik
     if (file) {
         const reader = new FileReader();
-        reader.onload = function (e) {
-            const base64String = e.target.result; // Konwersja na Base64
-            document.getElementById("Zdjecie").value = base64String; // Ustawienie ukrytego pola
-            // console.log("Tu jestem " + base64String); // Przydatne w debug
+        // Gdy plik zostanie wczytany
+        reader.onload = function (event) {
+            const base64String = event.target.result.split(",")[1]; // Pobierz Base64 bez nagłówka
+            console.log("Base64:", base64String); // Podgląd Base64 w konsoli
+            textarea.value = base64String; // Zapisz Base64 w ukrytym polu
         };
-        reader.readAsDataURL(file); // Odczyt pliku jako Base64
+        reader.readAsDataURL(file); // Odczytaj plik jako DataURL
     }
 });
