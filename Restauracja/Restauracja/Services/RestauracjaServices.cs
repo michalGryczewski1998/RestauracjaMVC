@@ -105,6 +105,7 @@ namespace Restauracja.Services
             {
                 model.Id = restauracjaSzukana.Id;
                 model.Nazwa = restauracjaSzukana.Nazwa;
+                model.Zdjecie = restauracjaSzukana.Zdjecie;
                 model.Opis = restauracjaSzukana.Opis;
                 model.TypLokalu = restauracjaSzukana.TypLokalu;
                 model.TypRestauracji = restauracjaSzukana.TypRestauracji;

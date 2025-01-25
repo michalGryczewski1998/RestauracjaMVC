@@ -15,6 +15,18 @@
 
         <!-- Szczegóły -->
         <div class="restaurant-details">
+            @if (string.IsNullOrEmpty(Model.Zdjecie))
+            {
+                <div style="float:right;">
+                    <img src="https://via.placeholder.com/300x200" alt="Zdjęcie restauracji">
+                </div>
+            }
+            else
+            {
+                <div style="float:right;">
+                    <img src="data:image/jpeg;base64,@Model.Zdjecie" alt="Zdjęcie restauracji">
+                </div>
+            }
             <div class="detail-item">
                 <span>Opis:</span> @Model.Opis
             </div>
