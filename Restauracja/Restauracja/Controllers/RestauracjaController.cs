@@ -85,11 +85,12 @@ namespace Restauracja.Controllers
 
                 if (czyDodanoAdres)
                 {
-                    return Redirect("Index");
+                    return Redirect("/Home/Index");
                 }
                 return BadRequest();
             }
-            return View(daneAdresowe);
+            return BadRequest();
         }
     }
 }
+
