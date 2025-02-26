@@ -1,5 +1,85 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Restauracja.Models.PrzyjmowaneDane.RestauracjaModel
+
 @{
+    int restauracjaId = (int)ViewData["RestauracjaId"];
 }
+
+<div class="restaurant-details">
+    @if(Model == null){
+        <div class="detail-item">
+            <span>Brak danych do wyświetlenia.</span>
+        </div>      
+    }
+    else
+    {
+        @if (string.IsNullOrEmpty(Model.Zdjecie))
+        {
+            <div style="float:right;">
+                <img src="https://via.placeholder.com/300x200" alt="Zdjęcie restauracji">
+            </div>
+        }
+        else
+        {
+            <div style="float:right;">
+                <img src="data:image/jpeg;base64,@Model.Zdjecie" alt="Zdjęcie restauracji">
+            </div>
+        }
+        <div class="detail-item">
+            <span>Opis:</span> @Model.Opis
+        </div>
+        <div class="detail-item">
+            <span>Typ Lokalu:</span> @Model.TypLokalu
+        </div>
+        <div class="detail-item">
+            <span>Typ Restauracji:</span> @Model.TypRestauracji
+        </div>
+        <div class="detail-item">
+            <span>Czy DriveThru:</span>
+            <span class="@(Model.CzyDriveThru ? "boolean-true" : "boolean-false")">
+                @(Model.CzyDriveThru ? "Tak" : "Nie")
+            </span>
+        </div>
+        <div class="detail-item">
+            <span>Czy Dostawa:</span>
+            <span class="@(Model.CzyDostawa ? "boolean-true" : "boolean-false")">
+                @(Model.CzyDostawa ? "Tak" : "Nie")
+            </span>
+        </div>
+        <div class="detail-item">
+            <span>Czy Parking:</span>
+            <span class="@(Model.CzyParkinPrzyRestauracji ? "boolean-true" : "boolean-false")">
+                @(Model.CzyParkinPrzyRestauracji ? "Tak" : "Nie")
+            </span>
+        </div>
+        <div class="detail-item">
+            <span>Możliwość Rezerwacji:</span>
+            <span class="@(Model.CzyMozliwaRezerwacja ? "boolean-true" : "boolean-false")">
+                @(Model.CzyMozliwaRezerwacja ? "Tak" : "Nie")
+            </span>
+        </div>
+        <div class="detail-item">
+            <span>Imprezy Okolicznościowe:</span>
+            <span class="@(Model.CzyImprezyOkolicznosciowe ? "boolean-true" : "boolean-false")">
+                @(Model.CzyImprezyOkolicznosciowe ? "Tak" : "Nie")
+            </span>
+        </div>
+        <div class="detail-item">
+            <span>Sala Okolicznościowa:</span>
+            <span class="@(Model.CzySalaOkolicznosciowa ? "boolean-true" : "boolean-false")">
+                @(Model.CzySalaOkolicznosciowa ? "Tak" : "Nie")
+            </span>
+        </div>
+        <div class="detail-item">
+            <span>Godzina Otwarcia:</span>
+            <span class="time">@Model.GodzinaOtwarcia</span>
+        </div>
+        <div class="detail-item">
+            <span>Godzina Zamknięcia:</span>
+            <span class="time">@Model.GodzinaZamkniecia</span>
+        </div>
+        <div class="detail-item">
+            <span>Czas Otwarcia:</span>
+            <span class="time">@Model.CzasOtwarcia</span>
+        </div>
+    }   
+</div>
