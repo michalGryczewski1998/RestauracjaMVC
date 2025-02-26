@@ -91,6 +91,16 @@ namespace Restauracja.Controllers
             }
             return BadRequest();
         }
+
+        public async Task<IActionResult> Edytuj(int Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+            ViewData["RestauracjaId"] = Id;
+            return View();
+        }
     }
 }
 
