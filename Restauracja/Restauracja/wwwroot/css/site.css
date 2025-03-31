@@ -18,7 +18,12 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: url('tlo.jpg'); /* Œcie¿ka do obrazka */
+    background-size: cover; /* Dopasowanie do ekranu bez powiêkszania */
+    background-position: center; /* Wyœrodkowanie */
+    background-repeat: no-repeat; /* Zapobieganie powtarzaniu */
+    background-attachment: fixed; /* Utrzymanie t³a w miejscu przy przewijaniu */
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
