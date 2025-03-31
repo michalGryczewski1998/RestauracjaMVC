@@ -1,81 +1,126 @@
 ﻿@model Restauracja.Models.PrzyjmowaneDane.RestauracjaModel
 
-<div class="restaurant-details">
-    @if(Model == null){
-        <div class="detail-item">
-            <span>Brak danych do wyświetlenia.</span>
-        </div>      
-    }
-    else
-    {
-        @if (string.IsNullOrEmpty(Model.Zdjecie))
-        {
-            <div style="float:right;">
-                <img src="https://via.placeholder.com/300x200" alt="Zdjęcie restauracji">
-            </div>
-        }
-        else
-        {
-            <div style="float:right;">
-                <img src="data:image/jpeg;base64,@Model.Zdjecie" alt="Zdjęcie restauracji">
-            </div>
-        }
-        <div class="detail-item">
-            <span>Opis:</span> @Model.Opis
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/DetailsrestauracjaStyl.css" />
+</head>
+
+<body>
+    <div class="restaurant-container">
+        <!-- Nagłówek -->
+        <div class="restaurant-header">
+            Restauracja: <strong>@Model.Nazwa</strong>
         </div>
-        <div class="detail-item">
-            <span>Typ Lokalu:</span> @Model.TypLokalu
+
+        <!-- Szczegóły -->
+        <div class="restaurant-details">
+            <form asp-controller="Restauracja" asp-action="ZapiszAdres" method="post">
+                @if (string.IsNullOrEmpty(Model.Zdjecie))
+                {
+                    <div style="float:right;">
+                        <img src="https://via.placeholder.com/300x200" alt="Zdjęcie restauracji">
+                    </div>
+                }
+                else
+                {
+                    <div style="float:right;">
+                        <img src="data:image/jpeg;base64,@Model.Zdjecie" alt="Zdjęcie restauracji">
+                    </div>
+                }
+                <!-- Nazwa -->
+                <div class="form-group">
+                    <label for="Nazwa">Nazwa:</label>
+                    <input type="text" id="Nazwa" name="Nazwa" required>
+                </div>
+
+                <!-- Opis -->
+                <div class="form-group">
+                    <label for="Opis">Opis:</label>
+                    <textarea id="Opis" name="Opis"></textarea>
+                </div>
+
+                <!-- Zdjecie -->
+                <div class="form-group">
+                    <label for="Zdjecie">Wybierz zdjęcie:</label>
+                    <input type="file" id="PlikZdjecia" accept="image/*" />
+                    <textarea id="Zdjecie" name="Zdjecie" hidden></textarea>
+                </div>
+
+                <!-- TypLokalu -->
+                <div class="form-group">
+                    <label for="TypLokalu">Typ Lokalu:</label>
+                    <input type="text" id="TypLokalu" name="TypLokalu">
+                </div>
+
+                <!-- TypRestauracji -->
+                <div class="form-group">
+                    <label for="TypRestauracji">Typ Restauracji:</label>
+                    <input type="text" id="TypRestauracji" name="TypRestauracji">
+                </div>
+
+                <!-- CzyDostawa -->
+                <div class="form-group">
+                    <label for="CzyDostawa">Czy Dostawa:</label>
+                    <input type="checkbox" id="CzyDostawa" name="CzyDostawa" value="true">
+                </div>
+
+                <!-- CzyDriveThru -->
+                <div class="form-group">
+                    <label for="CzyDriveThru">Czy Drive-Thru:</label>
+                    <!-- Checkbox -->
+                    <input type="checkbox" id="CzyDriveThru" name="CzyDriveThru" value="true">
+                </div>
+
+                <!-- CzyParkinPrzyRestauracji -->
+                <div class="form-group">
+                    <label for="CzyParkinPrzyRestauracji">Czy Parking Przy Restauracji:</label>
+                    <input type="checkbox" id="CzyParkinPrzyRestauracji" name="CzyParkinPrzyRestauracji" value="true">
+                </div>
+
+                <!-- CzyMozliwaRezerwacja -->
+                <div class="form-group">
+                    <label for="CzyMozliwaRezerwacja">Czy Możliwa Rezerwacja:</label>
+                    <input type="checkbox" id="CzyMozliwaRezerwacja" name="CzyMozliwaRezerwacja" value="true">
+                </div>
+
+                <!-- CzyImprezyOkolicznosciowe -->
+                <div class="form-group">
+                    <label for="CzyImprezyOkolicznosciowe">Czy Imprezy Okolicznościowe:</label>
+                    <input type="checkbox" id="CzyImprezyOkolicznosciowe" name="CzyImprezyOkolicznosciowe" value="true">
+                </div>
+
+                <!-- CzySalaOkolicznosciowa -->
+                <div class="form-group">
+                    <label for="CzySalaOkolicznosciowa">Czy Sala Okolicznościowa:</label>
+                    <input type="checkbox" id="CzySalaOkolicznosciowa" name="CzySalaOkolicznosciowa" value="true">
+                </div>
+
+                <!-- GodzinaOtwarcia -->
+                <div class="form-group">
+                    <label for="GodzinaOtwarcia">Godzina Otwarcia:</label>
+                    <input type="time" id="GodzinaOtwarcia" name="GodzinaOtwarcia" required>
+                </div>
+
+                <!-- GodzinaZamkniecia -->
+                <div class="form-group">
+                    <label for="GodzinaZamkniecia">Godzina Zamknięcia:</label>
+                    <input type="time" id="GodzinaZamkniecia" name="GodzinaZamkniecia" required>
+                </div>
+
+                <!-- CzasOtwarcia -->
+                <div class="form-group">
+                    <label for="CzasOtwarcia">Czas Otwarcia:</label>
+                    <input type="time" id="CzasOtwarcia" name="CzasOtwarcia">
+                </div>
+                <div class="card-footer d-flex justify-content-end gap-2">
+                    <button type="submit" class="btn btn-success mt-3">Zapisz</button>
+                </div>
+            </form>
         </div>
-        <div class="detail-item">
-            <span>Typ Restauracji:</span> @Model.TypRestauracji
+        <div class="restaurant-footer">
+            © @DateTime.Now.Year Twoja Restauracja | Wszystkie prawa zastrzeżone
         </div>
-        <div class="detail-item">
-            <span>Czy DriveThru:</span>
-            <span class="@(Model.CzyDriveThru ? "boolean-true" : "boolean-false")">
-                @(Model.CzyDriveThru ? "Tak" : "Nie")
-            </span>
-        </div>
-        <div class="detail-item">
-            <span>Czy Dostawa:</span>
-            <span class="@(Model.CzyDostawa ? "boolean-true" : "boolean-false")">
-                @(Model.CzyDostawa ? "Tak" : "Nie")
-            </span>
-        </div>
-        <div class="detail-item">
-            <span>Czy Parking:</span>
-            <span class="@(Model.CzyParkinPrzyRestauracji ? "boolean-true" : "boolean-false")">
-                @(Model.CzyParkinPrzyRestauracji ? "Tak" : "Nie")
-            </span>
-        </div>
-        <div class="detail-item">
-            <span>Możliwość Rezerwacji:</span>
-            <span class="@(Model.CzyMozliwaRezerwacja ? "boolean-true" : "boolean-false")">
-                @(Model.CzyMozliwaRezerwacja ? "Tak" : "Nie")
-            </span>
-        </div>
-        <div class="detail-item">
-            <span>Imprezy Okolicznościowe:</span>
-            <span class="@(Model.CzyImprezyOkolicznosciowe ? "boolean-true" : "boolean-false")">
-                @(Model.CzyImprezyOkolicznosciowe ? "Tak" : "Nie")
-            </span>
-        </div>
-        <div class="detail-item">
-            <span>Sala Okolicznościowa:</span>
-            <span class="@(Model.CzySalaOkolicznosciowa ? "boolean-true" : "boolean-false")">
-                @(Model.CzySalaOkolicznosciowa ? "Tak" : "Nie")
-            </span>
-        </div>
-        <div class="detail-item">
-            <span>Godzina Otwarcia:</span>
-            <span class="time">@Model.GodzinaOtwarcia</span>
-        </div>
-        <div class="detail-item">
-            <span>Godzina Zamknięcia:</span>
-            <span class="time">@Model.GodzinaZamkniecia</span>
-        </div>
-        <div class="detail-item">
-            <span>Czas Otwarcia:</span>
-            <span class="time">@Model.CzasOtwarcia</span>
-        </div>
-    }   
-</div>
+    </div>
+</body>
+
