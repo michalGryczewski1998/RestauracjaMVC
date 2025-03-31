@@ -98,8 +98,12 @@ namespace Restauracja.Controllers
             {
                 return NotFound();
             }
-            ViewData["RestauracjaId"] = Id;
-            return View();
+            var restauracja = await _restauracja.WyswietlKonkretnaRestauracje(Id);
+            if (restauracja == null)
+            {
+                return BadRequest();
+            }
+            return View(restauracja);
         }
     }
 }
