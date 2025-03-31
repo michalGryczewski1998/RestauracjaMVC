@@ -1,9 +1,4 @@
-﻿body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-}
-
-form {
+﻿form {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
@@ -20,33 +15,33 @@ h1 {
 .form-group {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    --margin-bottom: 15px;
 }
 
-    .form-group label {
-        width: 200px; /* Szerokość etykiety */
-        margin-right: 10px;
-        font-weight: bold;
-    }
+.form-group label {
+    width: 200px; /* Szerokość etykiety */
+    margin-right: 10px;
+    font-weight: bold;
+}
 
-    .form-group input,
-    .form-group textarea {
-        flex: 1;
-        padding: 8px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+.form-group input,
+.form-group textarea {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-    .form-group textarea {
-        resize: vertical;
-        height: 80px;
-    }
+.form-group textarea {
+    resize: vertical;
+    height: 80px;
+}
 
-    .form-group input[type="checkbox"] {
-        width: auto;
-        margin-left: 0;
-    }
+.form-group input[type="checkbox"] {
+    width: auto;
+    margin-left: 0;
+}
 
 button {
     display: block;
@@ -60,6 +55,6 @@ button {
     cursor: pointer;
 }
 
-    button:hover {
-        background-color: #0056b3;
-    }
+button:hover {
+    background-color: #0056b3;
+}
