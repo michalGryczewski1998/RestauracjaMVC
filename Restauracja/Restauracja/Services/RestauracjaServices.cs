@@ -83,9 +83,42 @@ namespace Restauracja.Services
             return false;
         }
 
-        public async Task<bool> EdytujRestauracje(int Id)
+        public async Task<bool> EdytujRestauracje(int Id, RestauracjaModel model)
         {
-            throw new NotImplementedException();
+            if (model != null)
+            {
+                var restauracja = await _restauracjaDbContext.Restauracjas.FindAsync(Id);
+
+                if (restauracja == null)
+                {
+                    return false; // Jeśli restauracja o danym ID nie istnieje
+                }
+
+                // Aktualizujemy pola
+                restauracja.Nazwa = model.Nazwa;
+                //restauracja.Zdjecie = model.Zdjecie;
+                restauracja.Opis = model.Opis;
+                restauracja.TypLokalu = model.TypLokalu;
+                restauracja.TypRestauracji = model.TypRestauracji;
+                restauracja.CzyDriveThru = model.CzyDriveThru;
+                restauracja.CzyDostawa = model.CzyDostawa;
+                restauracja.CzyParkinPrzyRestauracji = model.CzyParkinPrzyRestauracji;
+                restauracja.CzyMozliwaRezerwacja = model.CzyMozliwaRezerwacja;
+                restauracja.CzyImprezyOkolicznosciowe = model.CzyImprezyOkolicznosciowe;
+                restauracja.CzySalaOkolicznosciowa = model.CzySalaOkolicznosciowa;
+                restauracja.GodzinaOtwarcia = model.GodzinaOtwarcia;
+                restauracja.GodzinaZamkniecia = model.GodzinaZamkniecia;
+                restauracja.CzasOtwarcia = model.CzasOtwarcia;
+
+                int czyDodano = await _restauracjaDbContext.SaveChangesAsync();
+
+                if (czyDodano > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
         }
 
         public async Task<bool> UsunRestauracje(int Id)

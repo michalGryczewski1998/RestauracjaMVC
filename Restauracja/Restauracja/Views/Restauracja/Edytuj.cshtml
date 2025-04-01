@@ -15,7 +15,7 @@
 
         <!-- Szczegóły -->
         <div class="restaurant-details">
-            <form asp-controller="Restauracja" asp-action="ZapiszAdres" method="post">
+            <form asp-controller="Restauracja" asp-action="PrzeprowadzEdycje" asp-route-id="@Model.Id" method="post">
                 @if (string.IsNullOrEmpty(Model.Zdjecie))
                 {
                     <div style="float:right;">
