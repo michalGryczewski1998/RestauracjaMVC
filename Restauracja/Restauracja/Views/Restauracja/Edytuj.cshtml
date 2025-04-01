@@ -31,87 +31,86 @@
                 <!-- Nazwa -->
                 <div class="form-group">
                     <label for="Nazwa">Nazwa:</label>
-                    <input type="text" id="Nazwa" name="Nazwa" required>
+                    <input type="text" id="Nazwa" name="Nazwa" value="@Model.Nazwa">
                 </div>
 
                 <!-- Opis -->
                 <div class="form-group">
                     <label for="Opis">Opis:</label>
-                    <textarea id="Opis" name="Opis"></textarea>
+                    <input type="text" id="Opis" name="Opis" value="@Model.Opis"></input>
                 </div>
 
                 <!-- Zdjecie -->
                 <div class="form-group">
                     <label for="Zdjecie">Wybierz zdjęcie:</label>
-                    <input type="file" id="PlikZdjecia" accept="image/*" />
-                    <textarea id="Zdjecie" name="Zdjecie" hidden></textarea>
+                    <input type="file" id="PlikZdjecia" accept="image/*" value="@Model.Zdjecie"/>
                 </div>
 
                 <!-- TypLokalu -->
                 <div class="form-group">
                     <label for="TypLokalu">Typ Lokalu:</label>
-                    <input type="text" id="TypLokalu" name="TypLokalu">
+                    <input type="text" id="TypLokalu" name="TypLokalu" value="@Model.TypLokalu">
                 </div>
 
                 <!-- TypRestauracji -->
                 <div class="form-group">
                     <label for="TypRestauracji">Typ Restauracji:</label>
-                    <input type="text" id="TypRestauracji" name="TypRestauracji">
+                    <input type="text" id="TypRestauracji" name="TypRestauracji" value="@Model.TypRestauracji">
                 </div>
 
                 <!-- CzyDostawa -->
                 <div class="form-group">
                     <label for="CzyDostawa">Czy Dostawa:</label>
-                    <input type="checkbox" id="CzyDostawa" name="CzyDostawa" value="true">
+                    <input type="checkbox" id="CzyDostawa" name="CzyDostawa" value="true" @(Model.CzyDostawa ? "checked" : "")>
                 </div>
 
                 <!-- CzyDriveThru -->
                 <div class="form-group">
                     <label for="CzyDriveThru">Czy Drive-Thru:</label>
                     <!-- Checkbox -->
-                    <input type="checkbox" id="CzyDriveThru" name="CzyDriveThru" value="true">
+                    <input type="checkbox" id="CzyDriveThru" name="CzyDriveThru" value="true" @(Model.CzyDriveThru ? "checked" : "")>
                 </div>
 
                 <!-- CzyParkinPrzyRestauracji -->
                 <div class="form-group">
                     <label for="CzyParkinPrzyRestauracji">Czy Parking Przy Restauracji:</label>
-                    <input type="checkbox" id="CzyParkinPrzyRestauracji" name="CzyParkinPrzyRestauracji" value="true">
+                    <input type="checkbox" id="CzyParkinPrzyRestauracji" name="CzyParkinPrzyRestauracji" value="true" @(Model.CzyParkinPrzyRestauracji ? "checked" : "")>
                 </div>
 
                 <!-- CzyMozliwaRezerwacja -->
                 <div class="form-group">
                     <label for="CzyMozliwaRezerwacja">Czy Możliwa Rezerwacja:</label>
-                    <input type="checkbox" id="CzyMozliwaRezerwacja" name="CzyMozliwaRezerwacja" value="true">
+                    <input type="checkbox" id="CzyMozliwaRezerwacja" name="CzyMozliwaRezerwacja" value="true" @(Model.CzyMozliwaRezerwacja ? "checked" : "")>
                 </div>
 
                 <!-- CzyImprezyOkolicznosciowe -->
                 <div class="form-group">
                     <label for="CzyImprezyOkolicznosciowe">Czy Imprezy Okolicznościowe:</label>
-                    <input type="checkbox" id="CzyImprezyOkolicznosciowe" name="CzyImprezyOkolicznosciowe" value="true">
+                    <input type="checkbox" id="CzyImprezyOkolicznosciowe" name="CzyImprezyOkolicznosciowe" value="true" @(Model.CzyImprezyOkolicznosciowe ? "checked" : "")>
                 </div>
 
                 <!-- CzySalaOkolicznosciowa -->
                 <div class="form-group">
                     <label for="CzySalaOkolicznosciowa">Czy Sala Okolicznościowa:</label>
-                    <input type="checkbox" id="CzySalaOkolicznosciowa" name="CzySalaOkolicznosciowa" value="true">
+                    <input type="checkbox" id="CzySalaOkolicznosciowa" name="CzySalaOkolicznosciowa" value="true" @(Model.CzySalaOkolicznosciowa ? "checked" : "")>
                 </div>
 
                 <!-- GodzinaOtwarcia -->
                 <div class="form-group">
                     <label for="GodzinaOtwarcia">Godzina Otwarcia:</label>
-                    <input type="time" id="GodzinaOtwarcia" name="GodzinaOtwarcia" required>
+                    <input type="time" id="GodzinaOtwarcia" name="GodzinaOtwarcia" value="@Model.GodzinaOtwarcia">
                 </div>
 
                 <!-- GodzinaZamkniecia -->
                 <div class="form-group">
                     <label for="GodzinaZamkniecia">Godzina Zamknięcia:</label>
-                    <input type="time" id="GodzinaZamkniecia" name="GodzinaZamkniecia" required>
+                    <input type="time" id="GodzinaZamkniecia" name="GodzinaZamkniecia" value="@Model.GodzinaZamkniecia">
                 </div>
 
                 <!-- CzasOtwarcia -->
                 <div class="form-group">
                     <label for="CzasOtwarcia">Czas Otwarcia:</label>
-                    <input type="time" id="CzasOtwarcia" name="CzasOtwarcia">
+                    <input type="time" id="CzasOtwarcia" name="CzasOtwarcia" value="@Model.CzasOtwarcia">
                 </div>
                 <div class="card-footer d-flex justify-content-end gap-2">
                     <button type="submit" class="btn btn-success mt-3">Zapisz</button>

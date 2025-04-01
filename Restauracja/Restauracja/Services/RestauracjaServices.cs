@@ -110,6 +110,8 @@ namespace Restauracja.Services
                 model.TypLokalu = restauracjaSzukana.TypLokalu;
                 model.TypRestauracji = restauracjaSzukana.TypRestauracji;
                 model.CzasOtwarcia = restauracjaSzukana.CzasOtwarcia;
+                model.GodzinaOtwarcia = restauracjaSzukana.GodzinaOtwarcia;
+                model.GodzinaZamkniecia = restauracjaSzukana.GodzinaZamkniecia;
                 model.CzyDriveThru = restauracjaSzukana.CzyDriveThru;
                 model.CzyDostawa =  restauracjaSzukana.CzyDostawa;
                 model.CzyImprezyOkolicznosciowe = restauracjaSzukana.CzyImprezyOkolicznosciowe;
