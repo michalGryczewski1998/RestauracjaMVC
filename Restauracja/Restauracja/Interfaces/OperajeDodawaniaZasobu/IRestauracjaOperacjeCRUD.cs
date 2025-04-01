@@ -6,7 +6,7 @@ namespace Restauracja.Interfaces.OperajeDodawaniaZasobu
     {
         public Task<bool> DodajRestauracje(RestauracjaModel model);
         public Task<bool> UsunRestauracje(int Id);
-        public Task<bool> EdytujRestauracje(int Id);
+        public Task<bool> EdytujRestauracje(int Id, RestauracjaModel model);
         public Task<List<RestauracjaModel>> WyswietlRestauracje();
         public Task<RestauracjaModel> WyswietlKonkretnaRestauracje(int Id);
         public Task<bool> DodajAdresDlaRestauracji(AdresModel adresModel);

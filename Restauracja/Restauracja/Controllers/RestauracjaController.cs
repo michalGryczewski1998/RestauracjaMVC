@@ -105,6 +105,18 @@ namespace Restauracja.Controllers
             }
             return View(restauracja);
         }
+
+        public async Task<IActionResult> PrzeprowadzEdycje(int Id, RestauracjaModel daneRestauracji)
+        {
+            if (daneRestauracji == null)
+            {
+                return BadRequest();
+            }
+
+            var czyZedytowano = await _restauracja.EdytujRestauracje(Id, daneRestauracji);
+
+            return Redirect("/Home/Index");
+        }
     }
 }
 
